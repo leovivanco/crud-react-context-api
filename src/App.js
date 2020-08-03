@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import GlobalProvider from "./context/GlobalProvider";
 import HomePage from "./pages/HomePage";
 import AddPage from "./pages/AddPage";
 import EditPage from "./pages/EditPage";
@@ -18,14 +19,16 @@ const StyledGlobalDiv = withStyles({
 function App() {
   return (
     <StyledGlobalDiv>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/add" component={AddPage} />
-          <Route path="/edit" component={EditPage} />
-          <Route path="/delete" component={DeletePage} />
-        </Switch>
-      </Router>
+      <GlobalProvider>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/add" component={AddPage} />
+            <Route path="/edit/:id" component={EditPage} />
+            <Route path="/delete/:id" component={DeletePage} />
+          </Switch>
+        </Router>
+      </GlobalProvider>
     </StyledGlobalDiv>
   );
 }
