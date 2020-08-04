@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { FormControl, Input, Grid, Box } from "@material-ui/core";
 import Subtitle from "../components/Subtitle";
@@ -10,13 +10,26 @@ const EditPage = () => {
   const classes = BaseStyle();
   const { users, editUser } = useContext(GlobalContext);
   const { id } = useParams();
-  const currentItem = users.find((user) => user.id === +id);
+  const currentItem = users.find((user) => user.id === id);
+
   const history = useHistory();
-  const [name, setName] = useState("");
+  const [name, setName] = useState({
+    id: null,
+    name: "",
+  });
+
+  useEffect(() => {
+    setName(currentItem);
+  }, [currentItem]);
+
   const handleClick = () => {
-    console.log("name", name);
-   editUser({ id: currentItem.id, name });
+    editUser(name);
     history.push("/");
+  };
+
+  if (!currentItem) {
+    history.push("/");
+    return null;
   }
 
   return (
@@ -27,10 +40,12 @@ const EditPage = () => {
           <Grid item xs={12}>
             <Input
               id="my-input"
-              placeholder="Katlin Petimko"
+              placeholder="Katy Garcia"
               aria-describedby="my-helper-text"
-              defaultValue={currentItem.name}
-              onChange={(event) => setName(event.target.value)}
+              value={name.name}
+              onChange={(event) =>
+                setName({ ...name, name: event.target.value })
+              }
             />
           </Grid>
           <Grid item xs={12}>

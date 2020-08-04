@@ -1,14 +1,10 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import {
-  IconButton,
-  Box,
-  Typography,
-} from "@material-ui/core";
+import { IconButton, Box, Typography } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import { makeStyles } from "@material-ui/core/styles";
 import { GlobalContext } from "../context/GlobalProvider";
-import ListItems  from "../components/ListItems";
+import ListItems from "../components/ListItems";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,13 +26,12 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.background.paper,
     },
   },
-  
 }));
 
 const HomePage = () => {
   const { users } = useContext(GlobalContext);
   const classes = useStyles();
-  
+
   return (
     <>
       <Box className={classes.root}>
@@ -53,6 +48,11 @@ const HomePage = () => {
           </IconButton>
         </Box>
         <ListItems list={users} />
+        {users.length < 1 && (
+          <Typography align="center" variant="h4">
+            No Users
+          </Typography>
+        )}
       </Box>
     </>
   );

@@ -3,26 +3,26 @@ import AppReducer from "./AppReducer";
 
 const initialState = {
   users: [
-    {
-      id: 1,
-      name: "Katlin",
-    },
-    {
-      id: 2,
-      name: "Vedrana",
-    },
-    {
-      id: 3,
-      name: "Yulia",
-    },
-    {
-      id: 4,
-      name: "Katarina",
-    },
-    {
-      id: 5,
-      name: "Lauren",
-    },
+    // {
+    //   id: 1,
+    //   name: "Katlin",
+    // },
+    // {
+    //   id: 2,
+    //   name: "Vedrana",
+    // },
+    // {
+    //   id: 3,
+    //   name: "Yulia",
+    // },
+    // {
+    //   id: 4,
+    //   name: "Katarina",
+    // },
+    // {
+    //   id: 5,
+    //   name: "Lauren",
+    // },
   ],
 };
 

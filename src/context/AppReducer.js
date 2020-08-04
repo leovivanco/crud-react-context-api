@@ -8,12 +8,12 @@ export default (state, action) => {
       };
     case "EDIT_USER":
       const updateUser = action.payload;
-      const updateUsers = state.users.map(user => {
+      const updateUsers = state.users.map((user) => {
         if (user.id === updateUser.id) {
           return updateUser;
         }
         return user;
-      })
+      });
 
       return {
         ...state,

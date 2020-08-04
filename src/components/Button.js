@@ -17,7 +17,7 @@ const styleButtons = makeStyles((theme) => ({
   },
 }));
 
-const Button = ({ icon, value, click }) => {
+const Button = ({ icon, value, click, type }) => {
   let IconComponet = {
     component: null,
     color: "primary",
@@ -54,7 +54,7 @@ const Button = ({ icon, value, click }) => {
   );
   const renderDefaultButton = () => (
     <Bt
-      //type="submit"
+      type={type}
       onClick={click}
       variant="contained"
       color={IconComponet.color}
